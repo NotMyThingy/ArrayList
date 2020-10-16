@@ -6,9 +6,11 @@ public class Main {
 
         List<String> mylist = new List<>();
 
-        for (int i = 0; i < 11; i++) {
-            mylist.add("futtbuck");
-            mylist.add("betweaver");
-        }
+        mylist.add("Hey");
+        mylist.add("Hello");
+
+        System.out.println(mylist.contains("Elloh"));
+        System.out.println(mylist.contains("Hey"));
+
     }
 }
