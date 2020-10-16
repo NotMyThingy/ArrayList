@@ -1,44 +1,73 @@
 package com.notmythingy;
 
-import java.util.Arrays;
-
 public class List<T> {
 
     private T[] values;
-    private int indexCount;
+    private int valuesCount;
 
     public List() {
         values = (T[]) new Object[10];
-        indexCount = 0;
+        valuesCount = 0;
     }
 
+    /**
+     * @param value - Adds given value into an array.
+     */
     public void add(T value) {
         // check if array is running out of space
-        if (values.length == indexCount) {
+        if (values.length == valuesCount) {
             resize();
         }
 
-        values[indexCount] = value;
-        indexCount++;
+        values[valuesCount] = value;
+        valuesCount++;
     }
 
+    /**
+     * @param value - Search param
+     * @return - Return true if an array contain value.
+     */
     public boolean contains(T value) {
-        for (int i = 0; i < indexCount; i++) {
-            if (values[i].equals(value)) {
-                return true;
-            }
-        }
-        return false;
+        return indexOf(value) >= 0;
     }
 
+    /**
+     * @param value - Removes first instance of given value.
+     */
     public void remove(T value) {
-        int indefOfValue = indexOfValue(value);
-        if (indefOfValue < 0) {
+        int removed = indexOf(value);
+        if (removed < 0) {
             return;
         }
 
-        moveValuesToLeftFrom(indefOfValue);
-        indexCount--;
+        moveValuesToLeftFrom(removed);
+        valuesCount--;
+    }
+
+    /**
+     * @param value - Search param
+     * @return - Returns index of given value. Returns -1 if not found.
+     */
+    public int indexOf(T value) {
+        for (int i = 0; i < valuesCount; i++) {
+            if (values[i].equals(value)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     *
+     * @param index - Search param
+     * @return - Returns value in index.
+     */
+    public T valueOf(int index) {
+        if (index < 0 || index > valuesCount) {
+            throw new IndexOutOfBoundsException("Index should be between [0 - " + valuesCount + "]");
+        }
+
+        return values[index];
     }
 
     private void resize() {
@@ -51,23 +80,11 @@ public class List<T> {
         values = newArray;
     }
 
-    private int indexOfValue(T value) {
-        for (int i = 0; i < indexCount; i++) {
-            if (values[i].equals(value)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
     private void moveValuesToLeftFrom(int indefOfValue) {
-        for (int i = indefOfValue; i < indexCount - 1; i++) {
+        for (int i = indefOfValue; i < valuesCount - 1; i++) {
             values[indefOfValue] = values[indefOfValue + 1];
         }
-        System.out.println("moved left");
-        System.out.println(Arrays.toString(values));
-        values[indexCount - 1] = null;
-        System.out.println(Arrays.toString(values));
+        values[valuesCount - 1] = null;
     }
 
 
