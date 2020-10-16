@@ -11,7 +11,8 @@ public class List<T> {
     }
 
     /**
-     * @param value - Adds given value into an array.
+     * @param
+     *      value Adds given value into an array.
      */
     public void add(T value) {
         // check if array is running out of space
@@ -24,15 +25,20 @@ public class List<T> {
     }
 
     /**
-     * @param value - Search param
-     * @return - Return true if an array contain value.
+     * @param
+     *      value Search param
+     * @return
+     *      true if an array contain value.
      */
     public boolean contains(T value) {
         return indexOf(value) >= 0;
     }
 
     /**
-     * @param value - Removes first instance of given value.
+     * Removes first instance of given value.
+     *
+     * @param
+     *      value Search param
      */
     public void remove(T value) {
         int removed = indexOf(value);
@@ -45,8 +51,10 @@ public class List<T> {
     }
 
     /**
-     * @param value - Search param
-     * @return - Returns index of given value. Returns -1 if not found.
+     * @param
+     *      value Search param
+     * @return
+     *      index of given value. Returns -1 if not found.
      */
     public int indexOf(T value) {
         for (int i = 0; i < valuesCount; i++) {
@@ -58,9 +66,10 @@ public class List<T> {
     }
 
     /**
-     *
-     * @param index - Search param
-     * @return - Returns value in index.
+     * @param
+     *      index Search param
+     * @return
+     *      value in index.
      */
     public T valueOf(int index) {
         if (index < 0 || index > valuesCount) {
@@ -68,6 +77,14 @@ public class List<T> {
         }
 
         return values[index];
+    }
+
+    /**
+     * @return
+     *      Current size of the array.
+     */
+    public int size() {
+        return valuesCount;
     }
 
     private void resize() {

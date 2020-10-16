@@ -6,17 +6,12 @@ public class Main {
 
         List<String> mylist = new List<>();
 
-        System.out.println(mylist.contains("Hey"));
+        mylist.add("Hi");
+        mylist.add("Hello");
+        mylist.add("Howdy");
 
-        mylist.add("Hey");
-        System.out.println(mylist.contains("Hey"));
-
-        int index = mylist.indexOf("Hey");
-        System.out.println(index);
-
-        System.out.println(mylist.valueOf(index));
-
-        mylist.remove("Hey");
-        System.out.println(mylist.contains("Hey"));
+        for (int i = 0; i < mylist.size(); i++) {
+            System.out.println(mylist.valueOf(i));
+        }
     }
 }
