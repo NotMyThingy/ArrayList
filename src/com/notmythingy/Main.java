@@ -9,8 +9,10 @@ public class Main {
         mylist.add("Hey");
         mylist.add("Hello");
 
+
         System.out.println(mylist.contains("Elloh"));
         System.out.println(mylist.contains("Hey"));
 
+        mylist.remove("Hey");
     }
 }
